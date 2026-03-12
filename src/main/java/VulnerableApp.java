@@ -1,18 +1,17 @@
-
-
 import java.io.*;
 
 public class VulnerableApp {
 
     public static void main(String[] args) throws Exception {
 
-        BufferedReader reader =
-                new BufferedReader(new InputStreamReader(System.in));
+        String filename = args[0];
 
-        System.out.println("Enter command:");
+        File file = new File("/tmp/" + filename);
 
-        String cmd = reader.readLine();
+        BufferedReader reader = new BufferedReader(new FileReader(file));
 
-        Runtime.getRuntime().exec(cmd);   // Command Injection
+        System.out.println(reader.readLine());
+
+        reader.close();
     }
 }
